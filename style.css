@@ -41,7 +41,12 @@ body{
     border-radius: 20px;
 } */
  /* ================= HERO SECTION REDESIGN ================= */
-
+video{
+    left: 0;
+    top: 0;
+    z-index: -2;
+    position: fixed;
+}
 #hero{
     display: flex;
     flex-wrap: wrap;
@@ -50,7 +55,7 @@ body{
     gap: 60px;
     padding: 80px 20px;
     min-height: 90vh;
-    background: linear-gradient(135deg, #0f172a, #1e293b);
+    /* background: linear-gradient(135deg, #8aa3dc, #a7b6ce); */
 }
 
 /* Hero Cards */
@@ -62,7 +67,7 @@ body{
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(15px);
     border: 1px solid rgba(255,255,255,0.1);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    box-shadow: 0 20px 40px honeydew;
     transition: all 0.4s ease;
 }
 
@@ -77,7 +82,7 @@ body{
     border-radius: 30px;
     padding: 0;
     border: 4px solid #38bdf8;
-    box-shadow: 0 0 40px ghostwhite;
+    box-shadow: 0 0 40px skyblue;
     transition: transform 0.4s ease;
 }
 
@@ -105,7 +110,7 @@ body{
 /* Buttons */
 .b{
     padding: 15px 25px;
-    margin: 15px 10px 0 0;
+    margin: 15px 10px;
     border-radius: 30px;
     border: none;
     width: auto;
@@ -119,8 +124,10 @@ body{
 }
 
 .b:hover{
+    width: 150px;
+    transition: width 2s;
     transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(99,102,241,0.6);
+    box-shadow: 0 15px 35px rgba(61, 38, 191, 0.6);
 }
 
 /* Responsive */
@@ -162,7 +169,6 @@ h2{
 } */
  #about {
     padding:10px;
-    background-color: #ffffff;
   }
 
   #about h2 {
@@ -241,16 +247,18 @@ h2{
     width: 250px;
     transition: width 2s;
   }
+
 p{
     font-style: italic;
     font-size: large;
     padding: 20px;
+    color:dodgerblue;
 }
 h3{
     font-size: large;
 }
 h3:hover{
-    color: deepskyblue;
+    color: rebeccapurple;
     font-size: 20px;
     transition: font-sixe 2s,color 10ms;
 }
@@ -263,8 +271,8 @@ h3:hover{
     padding-bottom: 10px;
 }
 h3{
-    color: #2c3e50;
-    font-size: 1.5rem;
+    color: firebrick;
+    font-size: 1.6rem;
     margin-bottom: 15px;
 }
 .core{
@@ -291,7 +299,7 @@ h3{
 }
 .core1:hover{
  transform: translateY(-20px);
- box-shadow: 0 15px 40px firebrick;
+ box-shadow: 0 15px 40px lightgreen;
 }
 .core {
   width: 100%;
@@ -323,7 +331,7 @@ h3{
   margin-top: 30px;
 }
 #experience:hover{
-    background-color:rgb(225, 238, 231);
+    /* background-color:rgb(225, 238, 231); */
     transition: background-color 2s ease-out;
 }
 /* .form{
@@ -367,8 +375,9 @@ form{
         flex-wrap: wrap;
         gap: 25px; /* Better than margins for spacing */
         padding: 40px;
-        background: #f4f4f4;
         border-radius: 15px;
+        margin-left: 40px;
+        padding: 30px;
     }
 
     .icon i {
@@ -427,7 +436,7 @@ form{
     content: attr(data-tooltip); /* Pulls text from the data-tooltip attribute */
     position: absolute;
     bottom: -35px; /* Positions it below the icon */
-    left: 50%;
+    left: 60%;
     transform: translateX(-50%) translateY(10px);
     background-color: #19bdda;
     color: #fff;
@@ -440,6 +449,7 @@ form{
     transition: all 0.3s ease;
     pointer-events: none;
     z-index: 10;
+    margin-left: 20px;
 }
 
 /* Show Tooltip on Hover */

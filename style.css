@@ -1,0 +1,450 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+/* .me{
+    width: 30%;
+    border-radius: 70px 10px;
+    padding: 20px;
+}
+.hero{
+    flex: 1 1 400px;
+    margin: auto;
+    border: 2px dotted gainsboro;
+    width: 500px;
+    border-radius: 20px;
+    width: 40%;
+}
+#hero{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+.top{
+    padding: 15px;
+    margin: auto;
+    color: rgb(27, 91, 240);
+    font-size: 1.5em;
+    font-style: italic;
+}
+.b{
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    width: 400px;
+    margin-left: 10px;
+    border-radius: 20px;
+} */
+ /* ================= HERO SECTION REDESIGN ================= */
+
+#hero{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    padding: 80px 20px;
+    min-height: 90vh;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+}
+
+/* Hero Cards */
+.hero{
+    flex: 1 1 450px;
+    max-width: 550px;
+    padding: 40px;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    transition: all 0.4s ease;
+}
+
+.hero:hover{
+    transform: translateY(-10px);
+}
+
+/* Profile Image */
+.me{
+    width: 100%;
+    max-width: 350px;
+    border-radius: 30px;
+    padding: 0;
+    border: 4px solid #38bdf8;
+    box-shadow: 0 0 40px ghostwhite;
+    transition: transform 0.4s ease;
+}
+
+.me:hover{
+    transform: scale(1.02);
+}
+
+/* Text Styling */
+.top{
+    padding: 20px 0;
+    color: #ffffff;
+    font-size: 1.4rem;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.top:first-child{
+    font-size: 2.2rem;
+    font-weight: bold;
+    background: linear-gradient(to right, #38bdf8, #138697);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Buttons */
+.b{
+    padding: 15px 25px;
+    margin: 15px 10px 0 0;
+    border-radius: 30px;
+    border: none;
+    width: auto;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    background: linear-gradient(135deg, #38bdf8, #6366f1);
+    color: white;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 25px rgba(99,102,241,0.4);
+}
+
+.b:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(99,102,241,0.6);
+}
+
+/* Responsive */
+@media(max-width: 768px){
+    #hero{
+        text-align: center;
+    }
+
+    .hero{
+        padding: 30px;
+    }
+
+    .b{
+        width: 100%;
+        margin-right: 0;
+    }
+}
+h2{
+    padding: 15px;
+    margin: auto;
+    color: rgb(27, 91, 240);
+    font-size: 1.5em;
+}
+/* .card{
+    flex: 2 2 400px;
+    margin: auto;
+    border: 2px dotted gainsboro;
+    width: 500px;
+    border-radius: 20px;
+    width: 40%;
+    background-color: cadetblue;
+}
+.core-values{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+   
+} */
+ #about {
+    padding:10px;
+    background-color: #ffffff;
+  }
+
+  #about h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom:20px;
+    position: relative;
+    margin-top: 10px;
+  }
+
+  /* The Grid Container */
+  .core-values {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* The Individual Cards */
+  .card {
+    background:honeydew;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(37, 189, 231, 0.08);
+    padding: 30px;
+    flex: 1 1 350px; /* Cards will grow but stay around 350px */
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    border-top: 5px solid #34db82; /* Zetech Blue Accent */
+  }
+
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px palevioletred;
+  }
+
+  .card h3 {
+    color: #2c3e50;
+    font-size: 1.0rem;
+    margin-bottom: 15px;
+  }
+
+  .card p {
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    flex-grow: 1; /* Ensures text fills space so images align at bottom */
+  }
+  /* .about {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Keeps images from stretching */
+    */
+
+  .card:hover {
+    transform: scale(1.1);
+  }
+
+  /* Button/Link Styling */
+  .cert {
+    display: inline-block;
+    background: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+
+  .cert:hover {
+    background: #2980b9;
+    width: 250px;
+    transition: width 2s;
+  }
+p{
+    font-style: italic;
+    font-size: large;
+    padding: 20px;
+}
+h3{
+    font-size: large;
+}
+h3:hover{
+    color: deepskyblue;
+    font-size: 20px;
+    transition: font-sixe 2s,color 10ms;
+}
+.about{
+    border-radius: 20px;
+    margin:20px;
+}
+.io{
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+h3{
+    color: #2c3e50;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+.core{
+    margin-bottom: 10px;
+    border-radius: 30px 2px;
+}
+#languages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.core1 {
+  width: 300px; 
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  text-align: center;
+  margin-bottom: 30px;
+  flex-grow: 1;
+  background-color:silver;
+}
+.core1:hover{
+ transform: translateY(-20px);
+ box-shadow: 0 15px 40px firebrick;
+}
+.core {
+  width: 100%;
+  height: auto;
+}
+.web{
+  width: 300px; 
+  padding: 20px;
+  /* border: 1px solid #ddd; */
+  border-radius: 20px;
+  text-align: center;
+  margin-bottom: 30px;
+  flex-grow: 1;
+}
+.web1{
+  width: 300px; 
+  padding: 20px;
+  /* border: 1px solid #ddd; */
+  border-radius: 20px;
+  text-align: center;
+  margin-bottom: 30px;
+  flex-grow: 1;
+}
+#experience{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+}
+#experience:hover{
+    background-color:rgb(225, 238, 231);
+    transition: background-color 2s ease-out;
+}
+/* .form{
+  width: 100%; 
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+  margin-bottom: 30px;
+  flex-grow: 1;
+  background-color:tan;
+}
+#contact{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+} */
+/* textarea{
+    padding: 30px;
+    width: 90%;
+    border-radius: 10px;
+    text-align: center;
+}
+input{
+    padding: 10px;
+    width: 90%;
+    border-radius: 10px;
+    text-align: center; 
+}
+form{
+     font-size:large;
+} */
+.icon1{
+    font-size: 30px;
+}
+.social-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 25px; /* Better than margins for spacing */
+        padding: 40px;
+        background: #f4f4f4;
+        border-radius: 15px;
+    }
+
+    .icon i {
+        font-size: 40px;
+        color: #333; /* Default neutral color */
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        cursor: pointer;
+    }
+
+    .icon .fa-linkedin:hover {
+         color: #0077b5;
+          transform: scale(1.5);
+    }
+    .icon .fa-x-twitter:hover {
+         color: #000000; 
+         transform: scale(1.5); 
+    }
+    .icon .fa-square-instagram:hover { 
+        color: #e4405f; 
+        transform: scale(1.5);
+     }
+    .icon .fa-whatsapp:hover { 
+        color: #25d366;
+         transform: scale(1.5); 
+    }
+    .icon .fa-square-github:hover {
+         color: #333; 
+         transform: scale(1.5);
+     }
+    .icon .fa-envelope:hover {
+         color: #ea4335;
+          transform: scale(1.5);
+     }
+    .icon .fa-tiktok:hover { 
+        color: #ff0050;
+         transform: scale(1.5);
+     }
+    .icon .fa-facebook:hover {
+         color: #1877f2; 
+         transform: scale(1.5); 
+    }
+
+    /* Adding a subtle "Glow" effect instead of border */
+    .icon i:hover {
+        text-shadow: 0 0 20px pink;
+    }
+/* Position the span relative so the tooltip can be absolute */
+.icon {
+    position: relative;
+    display: inline-block;
+}
+
+/* Create the Tooltip Box */
+.icon::after {
+    margin: auto;
+    content: attr(data-tooltip); /* Pulls text from the data-tooltip attribute */
+    position: absolute;
+    bottom: -35px; /* Positions it below the icon */
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background-color: #19bdda;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Show Tooltip on Hover */
+.icon:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}

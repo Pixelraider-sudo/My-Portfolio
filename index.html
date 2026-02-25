@@ -6,20 +6,49 @@
     <title>Kipkirui John</title>
     <link rel="stylesheet" href="../style.css">
     <script src="../index.js" defer></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
+
+<div id="cinematicIntro">
+
+  <div class="glass-layer"></div>
+
+  <div class="loader-screen">
+    <h1 class="loader-text">Initializing Experience...You'll love my work</h1>
+  </div>
+
+  <div class="flash-paper"></div>
+
+</div>
+
+<div id="mainContent">
+  <div class="cursor"></div>
     <div>
         <video loop autoplay muted playsinline>
             <source src="../assets/back.mp4">
         </video>
     </div>
+  <!-- ALL YOUR WEBSITE CONTENT HERE -->
+    <body>
+  <div id="progressBar"></div>
+  <button id="floatingCTA">Let’s Work Together</button>
+  <div class="parallax" data-speed="0.3"></div>
+<div class="parallax" data-speed="0.6"></div>
+    
    <header>
     <nav>
+  <a href="#hero" class="nav-link">Home</a>
+  <a href="#about" class="nav-link">About</a>
+  <a href="#skills" class="nav-link">Skills</a>
+  <a href="#experience" class="nav-link">Experience</a>
+  <a href="#contact" class="nav-link">Contact</a>
+</nav>
     </nav>
    </header>
    <main>
     <section id="hero">
+        <canvas id="particles"></canvas>
       <div class="hero">
         <figure>
             
@@ -32,7 +61,7 @@
         <p class="top">Software Engineer|Frontend Specialist|System Thinker</p>
         <button class="b">View Projects</button>
         <button class="b">Download CV</button>
-        <button class="b">Contact Me</button>
+        <button class="b" id="contactBtn">Contact Me</button>
       </div>
     </section>
     <!-- <section id="about">
@@ -81,6 +110,7 @@
         </div>
        
     </section> -->
+    
     <section id="about">
   <!-- <h2>About Me</h2> -->
   <div class="core-values">
@@ -214,7 +244,7 @@
                 <img src="../assets/Css.jpg" class="core" alt="css">
             </figure>
              <div class="progress-container">
-               <div class="progress-bar" id="myBar">75%</div>
+               <div class="progress-bar" data-progress="80">80%</div>
             </div>
             <p>I bridge the gap between structural integrity and aesthetic precision by seamlessly integrating HTML5 and CSS3 into a cohesive user experience. By leveraging advanced CSS Flexbox and Grid layouts, I transform semantic HTML elements into responsive, high-performance interfaces that maintain visual harmony across all devices. My approach focuses on modularity and "Clean Code," ensuring that the underlying architecture is as robust as the surface-level design is intuitive. This synergy allows me to build digital environments that are not only functional but are optimized for both user engagement and technical scalability.</p>
         </div>
@@ -225,7 +255,7 @@
                 <img src="../assets/Javascript.jpg" class="core" alt="js">
             </figure>
              <div class="progress-container">
-               <div class="progress-bar" id="myBar">75%</div>
+              <div class="progress-bar" data-progress="50">50%</div>
             </div>
             <p>I leverage JavaScript to inject dynamic logic and complex interactivity into my projects, turning static interfaces into engaging user experiences. By mastering asynchronous programming and DOM manipulation, I ensure that every application remains fast, fluid, and highly functional</p>
         </div>
@@ -236,7 +266,7 @@
                 <img src="../assets/React.jpg" class="core" alt="react">
             </figure>
              <div class="progress-container">
-               <div class="progress-bar" id="myBar">75%</div>
+               <div class="progress-bar" data-progress="30">30%</div>
             </div>
             <p>I elevate my development workflow with React JS, building high-performance, component-based architectures that simplify the management of complex states. This allows me to create scalable, modern web applications that are as maintainable as they are powerful</p>
         </div>   
@@ -247,7 +277,7 @@
                 <img src="../assets/python.jpg" class="core" alt="react">
             </figure>
              <div class="progress-container">
-               <div class="progress-bar" id="myBar">45%</div>
+               <div class="progress-bar" data-progress="45">45%</div>
             </div>
             <p>I elevate my development workflow with Python, building high-performance, component-based architectures that simplify the management of complex states. This allows me to create scalable, modern web applications that are as maintainable as they are powerful</p>
         </div>  
@@ -342,14 +372,18 @@
         <img src="../assets/Soft.jpg" alt="">
      </div> -->
     <div class="social-container">
-        <span class="icon" data-tooltip="LinkedIn"><i class="fa-brands fa-linkedin"></i></span>
-        <span class="icon" data-tooltip="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></span>
-        <span class="icon" data-tooltip="Instagram"><i class="fa-brands fa-square-instagram"></i></span>
-        <span class="icon" data-tooltip="WhatsApp"><i class="fa-brands fa-whatsapp"></i></span>
-        <span class="icon" data-tooltip="GitHub"><i class="fa-brands fa-square-github"></i></span>
-        <span class="icon" data-tooltip="Email"><i class="fa-solid fa-envelope"></i></span>
-    </div>
+        <span class="icon" data-tooltip="LinkedIn" data-platform="linkedin"><i style="color: cadetblue;" class="fa-brands fa-linkedin"></i></span>
+       <!-- <span class="icon" data-tooltip="X (Twitter)" data-platform="x-twitter"><i class="fa-brands fa-x-twitter" style="color: rgb(44, 103, 179);"></i></span> -->
+        <span class="icon" data-tooltip="Instagram" data-platform="instagram"><i style="color: rgb(216, 35, 35);" class="fa-brands fa-square-instagram"></i></span>
+        <span class="icon" data-tooltip="WhatsApp" data-platform="whatsapp"><i style="color: rgba(18, 150, 20, 0.799);" class="fa-brands fa-whatsapp"></i></span>
+        <span class="icon" data-tooltip="GitHub" data-platform="github"><i style="color: cadetblue;" class="fa-brands fa-square-github"></i></span>
+        <span class="icon" data-tooltip="Email" data-platform="email"><i style="color: rgb(41, 161, 137);" class="fa-solid fa-envelope"></i></span>
+     </div>
     </section>
    </main>
 </body>
+</div>
+
+<audio id="impactSound" src="impact.mp3" preload="auto"></audio>
+
 </html>

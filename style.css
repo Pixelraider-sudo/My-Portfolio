@@ -1,10 +1,23 @@
 *{
     margin: 0;
     padding: 0;
+    overflow: hidden;
+}
+html{
+  scroll-behavior: smooth;
+  
 }
 body{
-    text-align: center;
+     overflow-x: hidden; /* keep horizontal hidden, vertical scroll works */
+     text-align: center;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    margin:0;
+    background:#0f172a;
+    height: 100vh;
+}
+section{
+  scroll-snap-align: start;
+  
 }
 /* .me{
     width: 30%;
@@ -109,8 +122,8 @@ video{
 
 /* Buttons */
 .b{
-    padding: 15px 25px;
-    margin: 15px 10px;
+    padding: 12px 28px;
+    margin: 15px 5px;
     border-radius: 30px;
     border: none;
     width: auto;
@@ -369,92 +382,315 @@ form{
     font-size: 30px;
 }
 .social-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 25px; /* Better than margins for spacing */
-        padding: 40px;
-        border-radius: 15px;
-        margin-left: 40px;
-        padding: 30px;
-    }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  padding: 30px;
+  opacity: 0;           /* Start hidden */
+  transform: translateY(40px); /* Start lower */
+  transition: all 1s ease-out;
+  z-index: 100;
+}
 
-    .icon i {
-        font-size: 40px;
-        color: #333; /* Default neutral color */
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        cursor: pointer;
-    }
+.social-container.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-    .icon .fa-linkedin:hover {
-         color: #0077b5;
-          transform: scale(1.5);
-    }
-    .icon .fa-x-twitter:hover {
-         color: #000000; 
-         transform: scale(1.5); 
-    }
-    .icon .fa-square-instagram:hover { 
-        color: #e4405f; 
-        transform: scale(1.5);
-     }
-    .icon .fa-whatsapp:hover { 
-        color: #25d366;
-         transform: scale(1.5); 
-    }
-    .icon .fa-square-github:hover {
-         color: #333; 
-         transform: scale(1.5);
-     }
-    .icon .fa-envelope:hover {
-         color: #ea4335;
-          transform: scale(1.5);
-     }
-    .icon .fa-tiktok:hover { 
-        color: #ff0050;
-         transform: scale(1.5);
-     }
-    .icon .fa-facebook:hover {
-         color: #1877f2; 
-         transform: scale(1.5); 
-    }
-
-    /* Adding a subtle "Glow" effect instead of border */
-    .icon i:hover {
-        text-shadow: 0 0 20px pink;
-    }
-/* Position the span relative so the tooltip can be absolute */
 .icon {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
 }
 
-/* Create the Tooltip Box */
+.icon i {
+  font-size: 40px;
+  color: #ffffff;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Hover Effects */
+.icon .fa-linkedin:hover { color: #0077b5; transform: scale(1.5); }
+.icon .fa-x-twitter:hover { color: #1da1f2; transform: scale(1.5); }
+.icon .fa-square-instagram:hover { color: #e4405f; transform: scale(1.5); }
+.icon .fa-whatsapp:hover { color: #25d366; transform: scale(1.5); }
+.icon .fa-square-github:hover { color: #333; transform: scale(1.5); }
+.icon .fa-envelope:hover { color: #ea4335; transform: scale(1.5); }
+
+.icon i:hover {
+  text-shadow: 0 0 15px rgba(255,255,255,0.6);
+}
+
+/* Tooltip */
 .icon::after {
-    margin: auto;
-    content: attr(data-tooltip); /* Pulls text from the data-tooltip attribute */
-    position: absolute;
-    bottom: -35px; /* Positions it below the icon */
-    left: 60%;
-    transform: translateX(-50%) translateY(10px);
-    background-color: #19bdda;
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 12px;
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    pointer-events: none;
-    z-index: 10;
-    margin-left: 20px;
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -35px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background-color: #19bdda;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 10;
 }
 
-/* Show Tooltip on Hover */
 .icon:hover::after {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+section{
+  opacity: 0;
+  transform: translateY(50px);
+  transition: 0.8s ease;
+}
+.cursor{
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background: rgba(56,189,248,0.8);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s ease;
+  box-shadow: 0 0 25px #38bdf8;
+  z-index: 9999;
+}
+#particles{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+#hero{
+  position: relative;
+  overflow: hidden;
+}
+.progress-container{
+  width: 100%;
+  height: 20px;
+  background: #ddd;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 15px 0;
+}
+
+.progress-bar{
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg,#38bdf8,#6366f1);
+  text-align: right;
+  padding-right: 10px;
+  line-height: 20px;
+  color: white;
+  font-weight: bold;
+  border-radius: 20px;
+  transition: width 1.5s ease-in-out;
+}
+.nav-link{
+  font-size: large;
+  text-decoration: none;
+  margin: 0 15px;
+  color:floralwhite;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.nav-link.active{
+  color: #38bdf8;
+  border-bottom: 3px solid #38bdf8;
+  padding-bottom: 5px;
+}
+#contact{
+  opacity: 0;
+  transform: translateY(80px);
+  transition: all 0.8s ease;
+}
+
+#contact.show{
+  opacity: 1;
+  transform: translateY(0);
+}
+@keyframes pulseGlow{
+  0%{ box-shadow: 0 0 0px #38bdf8; }
+  50%{ box-shadow: 0 0 25px #38bdf8; }
+  100%{ box-shadow: 0 0 0px #38bdf8; }
+}
+
+.b.glow{
+  animation: pulseGlow 1.5s infinite;
+}
+#progressBar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 0%;
+  background: #38bdf8;
+  z-index: 9999;
+}
+#floatingCTA{
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 12px 20px;
+  background: honeydew;
+  border: none;
+  color: rgb(233, 43, 199);
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(56,189,248,0.6);
+  transition: 0.3s;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+#floatingCTA.show{
+  opacity: 1;
+  transform: translateY(0);
+}
+.parallax{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  will-change: transform;
+}
+#introOverlay{
+  position:fixed;
+  inset:0;
+  background:black;
+  z-index:9999;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.glass{
+  width:100%;
+  height:100%;
+  backdrop-filter: blur(10px);
+  background:rgba(255,255,255,0.05);
+  animation: shatter 1.5s ease forwards;
+}
+
+@keyframes shatter{
+  0%{ transform: scale(1); opacity:1; }
+  50%{ transform: scale(1.05) rotate(2deg); }
+  100%{ transform: scale(3) rotate(15deg); opacity:0; }
+}
+#loader{
+  position:fixed;
+  inset:0;
+  background:#0f172a;
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9000;
+  opacity:0;
+  transition: opacity 0.5s ease;
+}
+
+#loader.show{
+  opacity:1;
+}
+#loader{
+  position:fixed;
+  inset:0;
+  background:#0f172a;
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9000;
+  opacity:0;
+  transition: opacity 0.5s ease;
+}
+
+#loader.show{
+  opacity:1;
+}
+#paperTransition{
+  position:fixed;
+  inset:0;
+  background:white;
+  z-index:8000;
+  transform: translateY(-100%);
+}
+
+#paperTransition.active{
+  animation: paperScroll 0.8s ease forwards;
+}
+
+@keyframes paperScroll{
+  0%{ transform: translateY(-100%); }
+  100%{ transform: translateY(100%); }
+}
+#mainContent{
+  opacity:0;
+  transition: opacity 2s ease;
+}
+
+#mainContent.show{
+  opacity:1;
+}
+
+/* OVERLAY */
+#cinematicIntro{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  pointer-events:none;
+}
+
+/* GLASS LAYER */
+.glass-layer{
+  position:absolute;
+  inset:0;
+  backdrop-filter: blur(20px);
+  background:rgba(255,255,255,0.05);
+}
+
+/* LOADER */
+.loader-screen{
+  position:absolute;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:lavenderblush;
+  opacity:0;
+}
+
+.loader-text{
+  font-size:2rem;
+  letter-spacing:2px;
+  text-transform: lowercase;
+}
+
+/* PAPER FLASH */
+.flash-paper{
+  position:absolute;
+  inset:0;
+  background-color:slategray;
+  transform:translateY(-100%);
+  transition: transform 2s ;
+}
+
+/* MAIN */
+#mainContent{
+  opacity:0;
+  transform:scale(0.98);
 }

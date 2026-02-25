@@ -9,43 +9,39 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+<audio id="impactSound" src="assets/impact.mp3" preload="auto"></audio>
 
 <div id="cinematicIntro">
-
   <div class="glass-layer"></div>
-
   <div class="loader-screen">
-    <h1 class="loader-text">Initializing Experience...You'll love my work</h1>
+    <div class="loader-text">Loading Experience...</div>
   </div>
-
-  <div class="flash-paper"></div>
-
+  <div id="paperTransition" class="flash-paper"></div>
 </div>
 
-<div id="mainContent">
-  <div class="cursor"></div>
-    <div>
-        <video loop autoplay muted playsinline>
-            <source src="../assets/back.mp4">
-        </video>
-    </div>
-  <!-- ALL YOUR WEBSITE CONTENT HERE -->
+
+
+<div id="mainContent" style="opacity:0; transform:scale(0.95);">
+  <!-- Your real content here -->
+    <!-- ALL YOUR WEBSITE CONTENT HERE -->
     <body>
+      <video autoplay muted loop playsinline>
+  <source src="assets/back.mp4"></source>
+</video>
   <div id="progressBar"></div>
   <button id="floatingCTA">Let’s Work Together</button>
   <div class="parallax" data-speed="0.3"></div>
 <div class="parallax" data-speed="0.6"></div>
     
-   <header>
+   <!-- <header>
     <nav>
   <a href="#hero" class="nav-link">Home</a>
   <a href="#about" class="nav-link">About</a>
   <a href="#skills" class="nav-link">Skills</a>
   <a href="#experience" class="nav-link">Experience</a>
   <a href="#contact" class="nav-link">Contact</a>
-</nav>
     </nav>
-   </header>
+   </header> -->
    <main>
     <section id="hero">
         <canvas id="particles"></canvas>
@@ -383,7 +379,4 @@
    </main>
 </body>
 </div>
-
-<audio id="impactSound" src="impact.mp3" preload="auto"></audio>
-
 </html>

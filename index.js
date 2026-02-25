@@ -77,53 +77,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", animateBars);
   animateBars();
 
-
-  /* 
-     Dark Mode Toggle
-  */
-  const toggle = document.createElement("button");
-  toggle.innerText = "🌙";
-  toggle.style.position = "fixed";
-  toggle.style.bottom = "20px";
-  toggle.style.right = "20px";
-  toggle.style.zIndex = "1000";
-  document.body.appendChild(toggle);
-
-  toggle.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-  });
-
-
-  /* 
-     Email Validator
-   */
-  function validateEmail(email) {
-    return /\S+@\S+\.\S+/.test(email);
-  }
-
-
-  /* 
-      GitHub Fetch
-  */
-  fetch("https://api.github.com/users/Pixelraider_sudo/repos")
-    .then(res => res.json())
-    .then(data => console.log(data))
-    .catch(err => console.error("GitHub fetch error:", err));
-
-
-  /* 
-     Custom Cursor
- */
-  const cursor = document.querySelector(".cursor");
-
-  if (cursor) {
-    document.addEventListener("mousemove", e => {
-      cursor.style.left = e.clientX + "px";
-      cursor.style.top = e.clientY + "px";
-    });
-  }
-
-
   /* 
      Particle Canvas
  */
@@ -386,7 +339,7 @@ window.addEventListener("load", () => {
   // PAPER FAST SCROLL
   tl.to(".flash-paper", {
     y:"100%",
-    duration:0.8,
+    duration:0.6,
     ease:"power4.inOut"
   });
 
@@ -443,4 +396,110 @@ document.addEventListener("DOMContentLoaded", () => {
     el.style.opacity = "1";
     el.style.transform = "translateY(0)";
   });
+});
+const canvas = document.getElementById("particles");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+document.querySelectorAll(".web").forEach(el => {
+  el.style.opacity = "1";
+  el.style.transform = "translateY(0)";
+});
+document.addEventListener("DOMContentLoaded", () => {
+
+  const intro = document.getElementById("cinematicIntro");
+  const loader = document.querySelector(".loader-screen");
+  const paper = document.getElementById("paperTransition");
+  const main = document.getElementById("mainContent");
+  const impact = document.getElementById("impactSound");
+  const socialContainer = document.querySelector(".social-container");
+
+  // Prevent scrolling during intro
+  document.body.style.overflow = "hidden";
+
+  // Function to start cinematic intro
+  function startCinematicIntro() {
+
+    // Ensure sound settings
+    if (impact) {
+      impact.volume = 0.7;
+      impact.muted = false;
+    }
+
+    const tl = gsap.timeline({
+
+      onComplete: () => {
+        // Enable scroll after intro
+        document.body.style.overflow = "auto";
+
+        // Show social icons
+        if (socialContainer) {
+          socialContainer.classList.add("show");
+        }
+
+        // Remove intro completely
+        if (intro) intro.remove();
+      }
+
+    });
+
+    // 1️⃣ Glass crack impact + sound
+    tl.to(".glass-layer", {
+      scale: 1.1,
+      duration: 0.3,
+      ease: "power2.out",
+      onStart: () => {
+        if (impact) {
+          impact.currentTime = 0;
+          impact.play().catch(err =>
+            console.log("Audio blocked:", err)
+          );
+        }
+      }
+    });
+
+    // 2️⃣ Glass explode
+    tl.to(".glass-layer", {
+      scale: 3,
+      rotation: 15,
+      opacity: 0,
+      duration: 1,
+      ease: "power4.in"
+    });
+
+    // 3️⃣ Loader appear
+    tl.to(loader, {
+      opacity: 1,
+      duration: 0.6
+    });
+
+    tl.fromTo(".loader-text",
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }
+    );
+
+    tl.to(loader, {
+      opacity: 0,
+      duration: 0.6,
+      delay: 1
+    });
+
+    // 4️⃣ Paper fast scroll
+    tl.to(paper, {
+      y: "100%",
+      duration: 0.6,
+      ease: "power4.inOut"
+    });
+
+    // 5️⃣ Main content reveal
+    tl.to(main, {
+      opacity: 1,
+      scale: 1,
+      duration: 1,
+      ease: "power3.out"
+    });
+  }
+
+  // 🔥 IMPORTANT: Start intro only after user interaction
+  document.addEventListener("click", startCinematicIntro, { once: true });
+
 });

@@ -1,11 +1,15 @@
 *{
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    box-sizing: border-box;
 }
 html{
   scroll-behavior: smooth;
-  
+}
+.parallax {
+    position: absolute;
+    left: 0;
+    width: 100%;
 }
 body{
      overflow-x: hidden; /* keep horizontal hidden, vertical scroll works */
@@ -13,11 +17,15 @@ body{
     font-family: Georgia, 'Times New Roman', Times, serif;
     margin:0;
     background:#0f172a;
-    height: 100vh;
+    
 }
 section{
   scroll-snap-align: start;
   
+}
+html, body {
+  width: 100%;
+  min-height: 100%;
 }
 /* .me{
     width: 30%;
@@ -58,7 +66,8 @@ video{
     left: 0;
     top: 0;
     z-index: -2;
-    position: fixed;
+   
+    position: sticky;
 }
 #hero{
     display: flex;
@@ -199,7 +208,7 @@ h2{
     flex-wrap: wrap;
     gap: 30px;
     justify-content: center;
-    max-width: 1200px;
+    max-width: 1500px;
     margin: 0 auto;
   }
 
@@ -214,11 +223,6 @@ h2{
     flex-direction: column;
     transition: all 0.3s ease;
     border-top: 5px solid #34db82; /* Zetech Blue Accent */
-  }
-
-  .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 35px palevioletred;
   }
 
   .card h3 {
@@ -240,8 +244,9 @@ h2{
     */
 
   .card:hover {
-    transform: scale(1.1);
-  }
+    box-shadow: 0 15px 35px palevioletred;
+    transform: translateY(-10px) scale(1.05);
+}
 
   /* Button/Link Styling */
   .cert {
@@ -319,15 +324,12 @@ h3{
   height: auto;
 }
 .web{
-  width: 300px; 
-  padding: 20px;
-  /* border: 1px solid #ddd; */
-  border-radius: 20px;
-  text-align: center;
-  margin-bottom: 30px;
-  flex-grow: 1;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.6s ease-out;
+  margin-bottom: 2rem; /* adjust spacing */
 }
-.web1{
+.web{
   width: 300px; 
   padding: 20px;
   /* border: 1px solid #ddd; */
@@ -408,18 +410,20 @@ form{
 .icon i {
   font-size: 40px;
   color: #ffffff;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.4s ease;
+}
 }
 
 /* Hover Effects */
-.icon .fa-linkedin:hover { color: #0077b5; transform: scale(1.5); }
-.icon .fa-x-twitter:hover { color: #1da1f2; transform: scale(1.5); }
-.icon .fa-square-instagram:hover { color: #e4405f; transform: scale(1.5); }
-.icon .fa-whatsapp:hover { color: #25d366; transform: scale(1.5); }
-.icon .fa-square-github:hover { color: #333; transform: scale(1.5); }
-.icon .fa-envelope:hover { color: #ea4335; transform: scale(1.5); }
+.icon .fa-linkedin:hover { color: #0077b5; transform: scale(1.0); }
+.icon .fa-x-twitter:hover { color: #1da1f2; transform: scale(1.0); }
+.icon .fa-square-instagram:hover { color: #e4405f; transform: scale(1.0); }
+.icon .fa-whatsapp:hover { color: #25d366; transform: scale(1.0); }
+.icon .fa-square-github:hover { color: #333; transform: scale(1.0); }
+.icon .fa-envelope:hover { color: #ea4335; transform: scale(1.0); }
 
 .icon i:hover {
+  transform: scale(1.15); /* smaller */
   text-shadow: 0 0 15px rgba(255,255,255,0.6);
 }
 
@@ -453,20 +457,18 @@ section{
   transform: translateY(50px);
   transition: 0.8s ease;
 }
-.cursor{
-  position: fixed;
+.cursor {
+  position: fixed; /* must be fixed to follow mouse */
   width: 20px;
   height: 20px;
-  background: rgba(56,189,248,0.8);
   border-radius: 50%;
-  pointer-events: none;
+  background: #38bdf8;
+  pointer-events: none; /* cursor doesn’t block clicks */
   transform: translate(-50%, -50%);
-  transition: transform 0.08s ease;
-  box-shadow: 0 0 25px #38bdf8;
-  z-index: 9999;
+  z-index: 1000;
 }
 #particles{
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -514,7 +516,7 @@ section{
 }
 #contact{
   opacity: 0;
-  transform: translateY(80px);
+  transform: translateY(30px);
   transition: all 0.8s ease;
 }
 
@@ -638,9 +640,14 @@ section{
   0%{ transform: translateY(-100%); }
   100%{ transform: translateY(100%); }
 }
-#mainContent{
-  opacity:0;
-  transition: opacity 2s ease;
+#mainContent {
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto; /* allow vertical scroll */
+  opacity: 0;
+  transform: scale(0.98);
+  transition: opacity 2s ease, transform 1s ease;
 }
 
 #mainContent.show{
@@ -693,4 +700,12 @@ section{
 #mainContent{
   opacity:0;
   transform:scale(0.98);
+}
+.social-container {
+  opacity: 0;
+  transition: 1s ease;
+}
+
+.social-container.show {
+  opacity: 1;
 }

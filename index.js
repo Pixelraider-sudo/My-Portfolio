@@ -386,7 +386,7 @@ window.addEventListener("load", () => {
   // PAPER FAST SCROLL
   tl.to(".flash-paper", {
     y:"100%",
-    duration:0.6,
+    duration:0.8,
     ease:"power4.inOut"
   });
 
